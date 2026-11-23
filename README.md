@@ -1,2 +1,3 @@
 # rescatopia
-Rescatopia es una app diseñada para apoyar la administración de un refugio de animales.
+En este proyecto se propone el desarrollo de Rescatopia, un sistema web adaptable a dispositivos móviles, diseñado para apoyar la administración de un refugio de animales. Su propósito es centralizar la información de los animales rescatados, llevar un control básico de su atención médica y facilitar los procesos de adopción mediante herramientas internas y un portal público.
+La propuesta parte de una problemática común en los refugios: la información puede encontrarse dispersa en documentos, hojas de cálculo, mensajes o registros físicos. Esto dificulta consultar rápidamente el estado de cada animal, conocer sus antecedentes médicos y dar seguimiento a las solicitudes de adopción.

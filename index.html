@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f4ef">
+  <meta name="description" content="Rescatopia: plataforma de gestión y adopción responsable de animales rescatados.">
+  <title>Rescatopia | Adopción responsable</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Nunito:wght@700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#" data-view="public" aria-label="Rescatopia inicio">
+        <span class="brand-mark">♡</span>
+        <span>rescatopia<span class="brand-dot">.</span><small>un hogar cambia todo</small></span>
+      </a>
+      <nav class="main-nav" aria-label="Navegación principal">
+        <button class="nav-link active" data-view="public">Adopta</button>
+        <button class="nav-link" data-view="dashboard">Panel</button>
+        <button class="nav-link" data-view="animals">Animales</button>
+        <button class="nav-link" data-view="medical">Salud</button>
+        <button class="nav-link" data-view="applications">Solicitudes <span id="pendingBadge" class="nav-badge">0</span></button>
+      </nav>
+      <div class="top-actions">
+        <span class="demo-pill"><i></i> DEMO</span>
+        <button class="mobile-menu" id="mobileMenu" aria-label="Abrir menú">☰</button>
+      </div>
+    </header>
+
+    <main>
+      <section id="view-public" class="view active">
+        <div class="hero">
+          <div class="hero-copy">
+            <span class="eyebrow"><span class="eyebrow-heart">♥</span> ADOPCIÓN RESPONSABLE</span>
+            <h1>Un nuevo comienzo<br> empieza con <em>una huella.</em></h1>
+            <p>Hay una historia esperando encontrarse contigo. Conoce a los animales que buscan un hogar lleno de cariño.</p>
+            <a href="#petsSection" class="btn btn-primary">Conocer a nuestros rescatados <span>→</span></a>
+            <div class="hero-note"><span class="mini-avatars">🐶 🐱 🐾</span><span>Pequeñas vidas, grandes historias.</span></div>
+          </div>
+          <div class="hero-art">
+            <div class="hero-blob"></div>
+            <img src="https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&w=900&q=85" alt="Perro esperando ser adoptado" onerror="this.style.display='none'">
+            <div class="floating-note"><span class="note-icon">♡</span><span><b>Adopta, no compres</b><small>El amor no tiene raza</small></span></div>
+            <span class="sparkle sparkle-one">✳</span><span class="sparkle sparkle-two">✦</span>
+          </div>
+        </div>
+
+        <section class="stats-strip" aria-label="Resumen del refugio">
+          <div><strong id="publicAvailable">0</strong><span>Buscando hogar</span></div>
+          <div><strong id="publicAdopted">0</strong><span>Adopciones felices</span></div>
+          <div><strong>1</strong><span>Refugio, una gran familia</span></div>
+        </section>
+
+        <section id="petsSection" class="content-section">
+          <div class="section-heading">
+            <div><span class="eyebrow">CONOCE A TU NUEVO MEJOR AMIGO</span><h2>Esperando por ti <span class="heading-heart">♥</span></h2><p>Cada uno tiene una personalidad única. ¿Quién hará match contigo?</p></div>
+            <div class="filters">
+              <label class="search-box"><span>⌕</span><input id="petSearch" type="search" placeholder="Buscar por nombre..."></label>
+              <select id="speciesFilter" aria-label="Filtrar por especie"><option value="all">Todos</option><option value="Perro">Perros</option><option value="Gato">Gatos</option></select>
+            </div>
+          </div>
+          <div id="publicPets" class="pet-grid"></div>
+          <div id="emptyPublic" class="empty-state hidden"><span>🐾</span><h3>Pronto habrá nuevos amigos</h3><p>Por ahora no hay animales publicados en esta categoría.</p></div>
+        </section>
+
+        <section class="adoption-steps">
+          <div><span class="eyebrow">EL CAMINO A CASA</span><h2>Adoptar es más sencillo<br>de lo que imaginas.</h2><p>Queremos que cada encuentro se convierta en una historia feliz y responsable.</p></div>
+          <div class="step"><b>01</b><span class="step-icon">🔎</span><h3>Conoce</h3><p>Explora los perfiles y encuentra a quien conecte contigo.</p></div>
+          <div class="step"><b>02</b><span class="step-icon">💌</span><h3>Solicita</h3><p>Cuéntanos un poco sobre ti y tu futuro hogar.</p></div>
+          <div class="step"><b>03</b><span class="step-icon">🏡</span><h3>Conecta</h3><p>El refugio revisará tu solicitud y te contactará.</p></div>
+        </section>
+      </section>
+
+      <section id="view-dashboard" class="view admin-view">
+        <div class="page-heading"><div><span class="eyebrow">RESUMEN DEL REFUGIO</span><h1>¡Hola! <em>Qué bueno verte.</em></h1><p>Esto es lo que está pasando hoy en Rescatopia.</p></div><button class="btn btn-primary" data-action="new-animal">＋ Registrar animal</button></div>
+        <div class="metric-grid">
+          <article class="metric-card peach"><span class="metric-icon">🐾</span><small>Animales registrados</small><strong id="metricTotal">0</strong><span class="metric-foot">En el refugio</span></article>
+          <article class="metric-card mint"><span class="metric-icon">🏡</span><small>Disponibles para adopción</small><strong id="metricAvailable">0</strong><span class="metric-foot">Esperando una familia</span></article>
+          <article class="metric-card lilac"><span class="metric-icon">🩺</span><small>En tratamiento</small><strong id="metricTreatment">0</strong><span class="metric-foot">Recibiendo cuidados</span></article>
+          <article class="metric-card butter"><span class="metric-icon">💛</span><small>Adopciones realizadas</small><strong id="metricAdopted">0</strong><span class="metric-foot">Nuevos comienzos</span></article>
+        </div>
+        <div class="dashboard-grid">
+          <section class="panel">
+            <div class="panel-heading"><div><h2>Actividad reciente</h2><p>Últimos movimientos registrados</p></div><span class="panel-symbol">↗</span></div>
+            <div id="recentActivity" class="activity-list"></div>
+          </section>
+          <section class="panel">
+            <div class="panel-heading"><div><h2>Solicitudes por revisar</h2><p>Personas interesadas en adoptar</p></div><button class="text-button" data-view="applications">Ver todas →</button></div>
+            <div id="dashboardApplications" class="compact-list"></div>
+          </section>
+        </div>
+        <div class="notice"><span>💡</span><div><b>Un recordatorio importante</b><p>Mantén actualizados los expedientes médicos y el estado de cada animal para que la información del portal sea confiable.</p></div></div>
+      </section>
+
+      <section id="view-animals" class="view admin-view">
+        <div class="page-heading"><div><span class="eyebrow">CUIDADO Y ORGANIZACIÓN</span><h1>Nuestros <em>rescatados.</em></h1><p>Administra los perfiles y el estado de los animales del refugio.</p></div><button class="btn btn-primary" data-action="new-animal">＋ Registrar animal</button></div>
+        <div class="toolbar"><label class="search-box"><span>⌕</span><input id="adminAnimalSearch" type="search" placeholder="Buscar animal..."></label><select id="statusFilter"><option value="all">Todos los estados</option><option value="Disponible">Disponible</option><option value="En tratamiento">En tratamiento</option><option value="En evaluación">En evaluación</option><option value="Adoptado">Adoptado</option></select></div>
+        <div class="panel table-panel"><div class="table-wrap"><table><thead><tr><th>Animal</th><th>Especie</th><th>Edad</th><th>Estado</th><th>Ingreso</th><th>Acciones</th></tr></thead><tbody id="animalsTable"></tbody></table></div><div id="emptyAnimals" class="empty-state hidden"><span>🐾</span><h3>No hay resultados</h3><p>Prueba con otro filtro o registra un nuevo animal.</p></div></div>
+      </section>
+
+      <section id="view-medical" class="view admin-view">
+        <div class="page-heading"><div><span class="eyebrow">BIENESTAR ANIMAL</span><h1>Expedientes de <em>salud.</em></h1><p>Registra y consulta vacunas, consultas y tratamientos.</p></div><button class="btn btn-primary" data-action="new-medical">＋ Nuevo registro</button></div>
+        <div class="toolbar"><label class="search-box"><span>⌕</span><input id="medicalSearch" type="search" placeholder="Buscar por animal..."></label><select id="medicalTypeFilter"><option value="all">Todos los registros</option><option value="Vacuna">Vacunas</option><option value="Consulta">Consultas</option><option value="Tratamiento">Tratamientos</option></select></div>
+        <div id="medicalList" class="medical-list"></div>
+        <div id="emptyMedical" class="empty-state hidden"><span>🩺</span><h3>Sin registros médicos</h3><p>Los nuevos registros aparecerán aquí.</p></div>
+      </section>
+
+      <section id="view-applications" class="view admin-view">
+        <div class="page-heading"><div><span class="eyebrow">ADOPCIÓN RESPONSABLE</span><h1>Solicitudes de <em>adopción.</em></h1><p>Conoce a las personas que quieren darle un hogar a nuestros rescatados.</p></div></div>
+        <div class="toolbar"><label class="search-box"><span>⌕</span><input id="applicationSearch" type="search" placeholder="Buscar solicitante o animal..."></label><select id="applicationStatusFilter"><option value="all">Todos los estados</option><option value="Pendiente">Pendientes</option><option value="En revisión">En revisión</option><option value="Aprobada">Aprobadas</option><option value="Rechazada">Rechazadas</option><option value="Completada">Completadas</option></select></div>
+        <div id="applicationsList" class="application-grid"></div>
+        <div id="emptyApplications" class="empty-state hidden"><span>💌</span><h3>Aún no hay solicitudes</h3><p>Cuando alguien solicite una adopción, aparecerá aquí.</p></div>
+      </section>
+    </main>
+
+    <footer class="footer"><a class="brand footer-brand" href="#" data-view="public"><span class="brand-mark">♡</span><span>rescatopia<span class="brand-dot">.</span><small>un hogar cambia todo</small></span></a><p>Hecho con cariño por quienes creen en las segundas oportunidades. <span>♥</span></p><small>Prototipo académico · Datos de demostración</small></footer>
+  </div>
+
+  <div id="modalBackdrop" class="modal-backdrop hidden">
+    <section class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal-header"><div><span class="eyebrow" id="modalEyebrow">RESCATOPIA</span><h2 id="modalTitle">Título</h2></div><button class="icon-button" id="closeModal" aria-label="Cerrar">×</button></div>
+      <div id="modalContent"></div>
+    </section>
+  </div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
